@@ -78,5 +78,70 @@ public class UI implements InitializingBean {
 	public void afterPropertiesSet() throws Exception {
 		System.setProperty("java.awt.headless", "false");
 	}
+
+
+	public JFrame getjFrame() {
+		return jFrame;
+	}
+
+
+	public void setjFrame(JFrame jFrame) {
+		this.jFrame = jFrame;
+	}
+
+
+	public JPanel getControlPanel() {
+		return controlPanel;
+	}
+
+
+	public void setControlPanel(JPanel controlPanel) {
+		this.controlPanel = controlPanel;
+	}
+
+
+	public JLabel getLabelQuestion() {
+		return labelQuestion;
+	}
+
+
+	public void setLabelQuestion(JLabel labelQuestion) {
+		this.labelQuestion = labelQuestion;
+	}
+
+
+	public JLabel getLabelResponse() {
+		return labelResponse;
+	}
+
+
+	public void setLabelResponse(JLabel labelResponse) {
+		this.labelResponse = labelResponse;
+	}
+
+
+	public JTextField getTextQuestion() {
+		return textQuestion;
+	}
+
+
+	public void setTextQuestion(JTextField textQuestion) {
+		this.textQuestion = textQuestion;
+	}
+
+
+	public JButton getBtnAdd() {
+		return btnAdd;
+	}
+
+
+	public void setBtnAdd(JButton btnAdd) {
+		this.btnAdd = btnAdd;
+	}
+
+
+	public EventHandler getEventHandler() {
+		return eventHandler;
+	}
 	
 }
