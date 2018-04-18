@@ -12,47 +12,57 @@ import javax.swing.JTextField;
 import javax.swing.TransferHandler;
 
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UI implements InitializingBean {
 	
+	
+	EventHandler eventHandler;
+	
+	@Autowired
+	public void setEventHandler(EventHandler eventHandler) {
+		this.eventHandler = eventHandler;
+	}
+
+
 	private JFrame jFrame;
 	private JPanel controlPanel;
 	private JLabel labelQuestion,labelResponse;
 	private JTextField textQuestion;
-	private JButton 
+	private JButton btnAdd;
 	
 	
     public void setupUI() {
-    	jFrame = new JFrame("Spring JFrame");
-    	jFrame.setLayout(new FlowLayout());
+    jFrame = new JFrame("Spring JFrame");
+    jFrame.setLayout(new FlowLayout());
     	
     	
-    	controlPanel = new JPanel();
+    controlPanel = new JPanel();
     controlPanel.setLayout(new GridLayout(2, 2));
 
-	label1 = new JLabel("User Name : ");
-	userName = new JTextField(15);
-	userName.setDragEnabled(true);
+	labelQuestion = new JLabel("Question");
+	textQuestion = new JTextField(30);
 	
-	label2 = new JLabel("Password : ");
-	userPass = new JPasswordField(15);
-
-	btnAddUser = new JButton();
-	btnAddUser.setText("Add user");
-	btnAddUser.setTransferHandler(new TransferHandler("text"));
-	btnAddUser.addActionListener(eventHandler::whenButtonClicked);
 	
+	labelResponse = new JLabel("");
 	
 
+	btnAdd = new JButton();
+	btnAdd.setText("Ask Question");
+	btnAdd.setTransferHandler(new TransferHandler("text"));
+	btnAdd.addActionListener(eventHandler::whenAddButtonClicked);
 	
-	controlPanel.add(label1);
-	controlPanel.add(userName);
-	controlPanel.add(label2);
-	controlPanel.add(userPass);
-	controlPanel.add(btnAddUser);
-	controlPanel.add(jlist);
+	
+	
+
+	
+	controlPanel.add(labelQuestion);
+	controlPanel.add(textQuestion);
+	controlPanel.add(labelResponse);
+	controlPanel.add(btnAdd);
+	
 
 	jFrame.add(controlPanel);
 	        
@@ -68,4 +78,5 @@ public class UI implements InitializingBean {
 	public void afterPropertiesSet() throws Exception {
 		System.setProperty("java.awt.headless", "false");
 	}
+	
 }
